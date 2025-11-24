@@ -1,735 +1,785 @@
-/* ========================================
-   OT/ICS CYBERSECURITY PORTFOLIO
-   Black Background / Neon Green / Aqua Blue
-   ======================================== */
-
-:root {
-    --bg-primary: #000000;
-    --bg-secondary: #0a0a0a;
-    --bg-tertiary: #141414;
-    --accent-aqua: #00f0ff;
-    --accent-green: #39ff14;
-    --accent-purple: #b537f2;
-    --text-primary: #e5e7eb;
-    --text-secondary: #9ca3af;
-    --border-color: #1f1f1f;
-    --font-heading: 'Orbitron', sans-serif;
-    --font-body: 'Rajdhani', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    font-family: var(--font-body);
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-
-/* Animated Background */
-.cyber-grid {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: linear-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridScroll 20s linear infinite;
-    pointer-events: none; z-index: 0;
-}
-
-@keyframes gridScroll { 0% { transform: translateY(0); } 100% { transform: translateY(50px); } }
-
-.scan-line {
-    position: fixed; top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
-    animation: scan 8s linear infinite;
-    pointer-events: none; z-index: 1; opacity: 0.5;
-}
-
-@keyframes scan { 0% { top: -2px; } 100% { top: 100%; } }
-
-/* Navigation */
-.main-nav {
-    position: fixed; top: 0; left: 0; width: 100%;
-    background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--accent-green); z-index: 1000;
-}
-
-.nav-container {
-    max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
-    display: flex; justify-content: space-between; align-items: center;
-}
-
-.logo { display: flex; flex-direction: column; }
-
-.logo-text {
-    font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900;
-    color: var(--accent-green); text-shadow: 0 0 20px rgba(57, 255, 20, 0.7);
-}
-
-.logo-subtitle {
-    font-family: var(--font-mono); font-size: 0.75rem;
-    color: var(--accent-aqua); letter-spacing: 2px;
-}
-
-.nav-links { display: flex; gap: 2rem; }
-
-.nav-link {
-    font-family: var(--font-mono); color: var(--text-secondary);
-    text-decoration: none; font-size: 0.9rem;
-    transition: var(--transition); position: relative;
-}
-
-.nav-link::after {
-    content: ''; position: absolute; bottom: -5px; left: 0;
-    width: 0; height: 2px; background: var(--accent-green);
-    transition: var(--transition);
-}
-
-.nav-link:hover, .nav-link.active { color: var(--accent-green); }
-.nav-link:hover::after, .nav-link.active::after { width: 100%; }
-
-/* Hero Section */
-.hero-section { min-height: 100vh; padding: 8rem 0 4rem; position: relative; z-index: 1; }
-
-.terminal-header {
-    background: var(--bg-secondary); border: 2px solid var(--accent-green);
-    border-radius: 8px 8px 0 0; padding: 0.75rem 1rem;
-    display: flex; align-items: center; gap: 1rem;
-}
-
-.terminal-controls { display: flex; gap: 0.5rem; }
-.control-btn { width: 12px; height: 12px; border-radius: 50%; }
-.control-btn.close { background: #ff5f56; }
-.control-btn.minimize { background: #ffbd2e; }
-.control-btn.maximize { background: var(--accent-green); }
-
-.terminal-title { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-green); }
-
-.hero-content {
-    background: var(--bg-secondary); border: 2px solid var(--accent-green);
-    border-top: none; border-radius: 0 0 8px 8px;
-    padding: 3rem; text-align: center; margin-bottom: 3rem;
-}
-
-.glitch-text {
-    font-family: var(--font-heading); font-size: 4rem; font-weight: 900;
-    color: var(--accent-green); text-shadow: 0 0 20px rgba(57, 255, 20, 0.8);
-    margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-    font-family: var(--font-heading); font-size: 1.5rem;
-    color: var(--accent-aqua); margin-bottom: 0.5rem; letter-spacing: 3px;
-}
-
-.hero-description { font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem; }
-
-.hero-specialties { font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem; }
-
-.status-bar { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
-
-.status-item {
-    font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-secondary);
-    display: flex; align-items: center; gap: 0.5rem;
-}
-
-.status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-secondary); }
-
-.status-dot.active {
-    background: var(--accent-green); box-shadow: 0 0 15px var(--accent-green);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-
-/* Experience Grid */
-.experience-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem; margin-bottom: 3rem;
-}
-
-.exp-card {
-    background: var(--bg-secondary); border: 2px solid var(--accent-aqua);
-    border-radius: 8px; padding: 2rem; text-align: center;
-    transition: var(--transition);
-}
-
-.exp-card:hover {
-    transform: translateY(-5px); border-color: var(--accent-green);
-    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.3);
-}
-
-.exp-icon { font-size: 3rem; margin-bottom: 1rem; }
-
-.exp-card h3 {
-    font-family: var(--font-heading); color: var(--accent-green);
-    margin-bottom: 0.5rem; font-size: 1.5rem;
-}
-
-.exp-card p { color: var(--text-primary); font-size: 1rem; }
-
-/* Achievement Cards */
-.achievement-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem; margin-bottom: 4rem;
-}
-
-.achievement-card {
-    background: var(--bg-secondary); border: 2px solid var(--border-color);
-    border-radius: 8px; padding: 2rem; text-align: center;
-    transition: var(--transition); position: relative; overflow: hidden;
-}
-
-.achievement-card::before {
-    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.1), transparent);
-    transition: left 0.5s;
-}
-
-.achievement-card:hover {
-    transform: translateY(-5px); border-color: var(--accent-green);
-    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.3);
-}
-
-.achievement-card:hover::before { left: 100%; }
-
-.achievement-icon { font-size: 3rem; margin-bottom: 1rem; }
-
-.achievement-card h3 {
-    font-family: var(--font-heading); color: var(--accent-aqua);
-    margin-bottom: 1.5rem; font-size: 1.1rem; letter-spacing: 1px;
-}
-
-.progress-bar {
-    background: var(--bg-tertiary); height: 8px; border-radius: 4px;
-    overflow: hidden; margin-bottom: 0.5rem;
-}
-
-.progress-fill {
-    height: 100%; background: linear-gradient(90deg, var(--accent-aqua), var(--accent-green));
-    border-radius: 4px; width: 0; transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.progress-label {
-    font-family: var(--font-mono); font-size: 0.9rem;
-    color: var(--text-secondary); margin-bottom: 0.5rem;
-}
-
-.achievement-detail { font-size: 0.95rem; color: var(--text-primary); }
-
-/* Stats Dashboard */
-.stats-dashboard { margin-bottom: 4rem; }
-
-.section-title {
-    font-family: var(--font-heading); font-size: 2rem; color: var(--accent-green);
-    text-align: center; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 3px;
-    text-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
-}
-
-.stats-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;
-}
-
-.stat-card {
-    background: var(--bg-secondary); border: 2px solid var(--border-color);
-    border-radius: 8px; padding: 2rem; text-align: center; transition: var(--transition);
-}
-
-.stat-card:hover {
-    transform: translateY(-5px); border-color: var(--accent-green);
-    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.3);
-}
-
-.stat-value {
-    font-family: var(--font-heading); font-size: 3rem; color: var(--accent-green);
-    text-shadow: 0 0 15px rgba(57, 255, 20, 0.7); margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-secondary);
-    text-transform: uppercase; letter-spacing: 1px;
-}
-
-/* Content Sections */
-.content-section { padding: 6rem 0; position: relative; z-index: 1; }
-.content-section.dark { background: rgba(10, 10, 10, 0.8); }
-.section-subtitle { text-align: center; font-size: 1.2rem; color: var(--accent-aqua); margin-bottom: 3rem; }
-
-/* Education Timeline */
-.education-timeline { margin-bottom: 3rem; }
-
-.edu-year {
-    display: inline-block; background: var(--accent-green); color: var(--bg-primary);
-    padding: 0.5rem 1rem; border-radius: 4px; font-weight: bold;
-    margin-bottom: 1rem; font-family: var(--font-mono);
-}
-
-/* Interests Section */
-.interests-section { margin: 3rem 0; }
-
-.interests-section h3 {
-    font-family: var(--font-heading); color: var(--accent-aqua);
-    text-align: center; margin-bottom: 2rem; font-size: 1.8rem;
-}
-
-.interests-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
-}
-
-.interest-card {
-    background: var(--bg-tertiary); border: 2px solid var(--accent-aqua);
-    border-radius: 8px; padding: 2rem; text-align: center; transition: var(--transition);
-}
-
-.interest-card:hover {
-    transform: translateY(-5px); border-color: var(--accent-green);
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
-}
-
-.interest-icon { font-size: 3rem; margin-bottom: 1rem; }
-
-.interest-card h4 {
-    color: var(--accent-green); margin-bottom: 1rem; font-size: 1.2rem;
-}
-
-/* Lab Tabs */
-.lab-tabs { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; justify-content: center; }
-
-.tab-btn {
-    font-family: var(--font-mono); background: var(--bg-secondary);
-    color: var(--text-secondary); border: 2px solid var(--border-color);
-    padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer;
-    transition: var(--transition); font-size: 0.9rem;
-}
-
-.tab-btn:hover { color: var(--accent-green); border-color: var(--accent-green); }
-
-.tab-btn.active {
-    background: var(--accent-green); color: var(--bg-primary);
-    border-color: var(--accent-green); font-weight: 600;
-}
-
-.tab-content {
-    display: none; background: var(--bg-secondary);
-    border: 2px solid var(--accent-green); border-radius: 8px;
-    padding: 3rem; animation: fadeIn 0.5s ease-in-out;
-}
-
-.tab-content.active { display: block; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-.tab-content h3 {
-    font-family: var(--font-heading); color: var(--accent-green);
-    margin-bottom: 1.5rem; font-size: 1.8rem;
-}
-
-.coming-soon { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1rem; }
-
-.container-list { list-style: none; margin: 2rem 0; }
-
-.container-list li {
-    padding: 1rem; margin-bottom: 1rem; background: var(--bg-tertiary);
-    border-left: 3px solid var(--accent-green); border-radius: 4px;
-}
-
-.container-list strong { color: var(--accent-green); }
-
-/* Education & Certification Cards */
-.education-card, .glow-card {
-    background: var(--bg-secondary); border: 2px solid var(--border-color);
-    border-radius: 8px; padding: 2rem; margin-bottom: 2rem; transition: var(--transition);
-}
-
-.education-card:hover, .glow-card:hover {
-    border-color: var(--accent-green); box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
-}
-
-.education-card h3 {
-    font-family: var(--font-heading); color: var(--accent-green);
-    margin-bottom: 0.5rem; font-size: 1.5rem;
-}
-
-.institution { color: var(--accent-aqua); font-size: 1.1rem; margin-bottom: 0.5rem; }
-.date { color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: 1rem; }
-
-.training-platforms h3 {
-    font-family: var(--font-heading); color: var(--accent-green);
-    margin-bottom: 2rem; text-align: center; font-size: 1.8rem;
-}
-
-.platform-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
-}
-
-.platform-card {
-    background: var(--bg-tertiary); border: 2px solid var(--accent-aqua);
-    border-radius: 8px; padding: 2rem; text-align: center; transition: var(--transition);
-}
-
-.platform-card:hover { transform: translateY(-5px); border-color: var(--accent-green); }
-.platform-card h4 { color: var(--accent-green); margin-bottom: 1rem; }
-
-/* Certification Grid */
-.cert-categories h3 {
-    font-family: var(--font-heading); color: var(--accent-aqua);
-    margin: 3rem 0 2rem 0; font-size: 1.5rem;
-}
-
-.cert-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem; margin-bottom: 3rem;
-}
-
-.cert-card {
-    background: var(--bg-secondary); border: 2px solid var(--border-color);
-    border-radius: 8px; padding: 2rem; text-align: center; transition: var(--transition);
-}
-
-.cert-card:hover { transform: translateY(-5px); border-color: var(--accent-green); }
-.cert-badge { font-size: 3rem; margin-bottom: 1rem; }
-.cert-card h4 { font-family: var(--font-heading); color: var(--accent-green); margin-bottom: 0.5rem; }
-
-/* PLC/OT/ICS & Quantum Sections */
-.plc-grid, .quantum-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.plc-card, .quantum-card {
-    background: var(--bg-secondary); border: 2px solid var(--accent-aqua);
-    border-radius: 8px; padding: 2rem; transition: var(--transition);
-}
-
-.plc-card:hover, .quantum-card:hover {
-    transform: translateY(-5px); border-color: var(--accent-green);
-    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
-}
-
-.plc-card h3, .quantum-card h3 {
-    color: var(--accent-green); margin-bottom: 1rem; font-size: 1.3rem;
-}
-
-.section-note {
-    text-align: center; color: var(--text-secondary);
-    font-style: italic; margin-top: 2rem;
-}
-
-/* Projects Section */
-.projects-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; }
-
-.project-category {
-    background: var(--bg-secondary); border: 2px solid var(--accent-aqua);
-    border-radius: 8px; padding: 2rem;
-}
-
-.project-category h3 {
-    font-family: var(--font-heading); color: var(--accent-green);
-    margin-bottom: 1.5rem; font-size: 1.5rem;
-}
-
-/* Buttons */
-.btn-primary, .btn-secondary {
-    display: inline-block; font-family: var(--font-heading);
-    background: var(--accent-green); color: var(--bg-primary);
-    padding: 1rem 2rem; border-radius: 4px; text-decoration: none;
-    font-weight: 600; transition: var(--transition);
-    border: 2px solid var(--accent-green);
-}
-
-.btn-primary:hover, .btn-secondary:hover {
-    background: transparent; color: var(--accent-green);
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
-}
-
-.btn-secondary {
-    background: transparent; color: var(--accent-aqua);
-    border-color: var(--accent-aqua);
-}
-
-.btn-secondary:hover {
-    background: var(--accent-aqua); color: var(--bg-primary);
-}
-
-/* Footer */
-.main-footer {
-    background: var(--bg-secondary); border-top: 2px solid var(--accent-green);
-    padding: 3rem 0 1rem; position: relative; z-index: 1;
-}
-
-.footer-content {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem; margin-bottom: 2rem;
-}
-
-.footer-section h3 { font-family: var(--font-heading); color: var(--accent-green); margin-bottom: 1rem; }
-
-.footer-section a {
-    color: var(--text-secondary); text-decoration: none; transition: var(--transition);
-}
-
-.footer-section a:hover { color: var(--accent-green); }
-
-.footer-bottom {
-    text-align: center; padding-top: 2rem; border-top: 2px solid var(--border-color);
-    color: var(--text-secondary); font-family: var(--font-mono);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .glitch-text { font-size: 2.5rem; }
-    .achievement-grid, .stats-grid, .experience-grid { grid-template-columns: 1fr; }
-    .projects-categories { grid-template-columns: 1fr; }
-}
-
-html { scroll-behavior: smooth; }
-::selection { background: var(--accent-green); color: var(--bg-primary); }
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--accent-green); border-radius: 5px; }
-
-/* Engineering & Design Section */
-.engineering-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.engineering-card {
-    background: var(--bg-secondary);
-    border: 2px solid var(--accent-aqua);
-    border-radius: 8px;
-    padding: 2rem;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-.engineering-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
-    transition: left 0.5s;
-}
-
-.engineering-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-green);
-    box-shadow: 0 15px 40px rgba(57, 255, 20, 0.3);
-}
-
-.engineering-card:hover::before {
-    left: 100%;
-}
-
-.eng-icon {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.engineering-card h3 {
-    font-family: var(--font-heading);
-    color: var(--accent-green);
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.eng-description {
-    color: var(--text-primary);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    text-align: justify;
-}
-
-.eng-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.skill-tag {
-    background: var(--bg-tertiary);
-    color: var(--accent-aqua);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    border: 1px solid var(--accent-aqua);
-    transition: var(--transition);
-}
-
-.skill-tag:hover {
-    background: var(--accent-aqua);
-    color: var(--bg-primary);
-    transform: translateY(-2px);
-}
-
-.engineering-card .btn-secondary {
-    width: 100%;
-    text-align: center;
-    display: block;
-}
-
-/* Design Philosophy Section */
-.design-philosophy {
-    margin-top: 4rem;
-}
-
-.design-philosophy h3 {
-    font-family: var(--font-heading);
-    color: var(--accent-green);
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
-}
-
-.philosophy-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.philosophy-card {
-    background: var(--bg-tertiary);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    padding: 2rem;
-    text-align: center;
-    transition: var(--transition);
-}
-
-.philosophy-card:hover {
-    border-color: var(--accent-green);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
-}
-
-.philosophy-card h4 {
-    font-family: var(--font-heading);
-    color: var(--accent-aqua);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.philosophy-card p {
-    color: var(--text-primary);
-    line-height: 1.6;
-}
-
-/* Frameworks & Standards Section */
-.framework-categories h3 {
-    font-family: var(--font-heading);
-    color: var(--accent-aqua);
-    margin: 3rem 0 2rem 0;
-    font-size: 1.5rem;
-}
-
-.framework-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.framework-card {
-    background: var(--bg-secondary);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    padding: 2rem;
-    transition: var(--transition);
-}
-
-.framework-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-green);
-    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
-}
-
-.framework-card h4 {
-    font-family: var(--font-heading);
-    color: var(--accent-green);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.framework-card p {
-    color: var(--text-primary);
-    line-height: 1.6;
-}
-
-/* Blue/Red Team Sections */
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.team-card {
-    background: var(--bg-secondary);
-    border: 2px solid var(--accent-aqua);
-    border-radius: 8px;
-    padding: 2rem;
-    transition: var(--transition);
-}
-
-.team-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-green);
-    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
-}
-
-.team-card h3 {
-    color: var(--accent-green);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.team-card p {
-    color: var(--text-primary);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-/* Updated Stats Grid with wider Events card */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
-}
-
-.stat-card-wide {
-    grid-column: span 5;
-}
-
-@media (max-width: 1200px) {
-    .stats-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .stat-card-wide {
-        grid-column: span 3;
-    }
-}
-
-@media (max-width: 768px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    .stat-card-wide {
-        grid-column: span 1;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Case - OT/ICS/BMS Security Architect | 22+ Years Experience</title>
+    <meta name="description" content="Cybersecurity Defense Architect | OT/ICS/BMS Automation Systems Architect, Programmer & Designer | 22+ Years Experience | Electrical, Mechanical, Computer Networking, AI & Quantum Engineering">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="scan-line"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">ERIC CASE</span>
+                <span class="logo-subtitle">// SEC_OPS</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#frameworks" class="nav-link">Frameworks</a>
+                <a href="#engineering" class="nav-link">Engineering</a>
+                <a href="#ot-ics-lab" class="nav-link">OT/ICS Lab</a>
+                <a href="#plc-section" class="nav-link">PLC/OT/ICS</a>
+                <a href="#blue-team" class="nav-link">Blue Team</a>
+                <a href="#red-team" class="nav-link">Red Team</a>
+                <a href="#quantum" class="nav-link">Quantum Computing</a>
+                <a href="#projects" class="nav-link">Projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <span class="control-btn close"></span>
+                    <span class="control-btn minimize"></span>
+                    <span class="control-btn maximize"></span>
+                </div>
+                <div class="terminal-title">root@ericcase:~$ ./security_ops.sh</div>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="glitch-text" data-text="ERIC CASE">ERIC CASE</h1>
+                <p class="hero-subtitle">CYBERSECURITY DEFENSE ARCHITECT</p>
+                <p class="hero-description">OT/ICS/BMS Automation Systems Architect, Programmer & Designer</p>
+                <p class="hero-specialties">Electrical | Mechanical | Computer Networking | (Learning) AI & Quantum Engineering</p>
+                
+                <div class="status-bar">
+                    <span class="status-item"><span class="status-dot active"></span> OPERATIONAL</span>
+                    <span class="status-item">22+ Years OT/ICS/BMS Experience</span>
+                    <span class="status-item">B.S. Cybersecurity (Dec 2026)</span>
+                </div>
+            </div>
+
+            <!-- Experience Highlights -->
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <div class="exp-icon">🏭</div>
+                    <h3>22+ YEARS</h3>
+                    <p>OT/ICS/BMS Automation Systems</p>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-icon">💻</div>
+                    <h3>12+ YEARS</h3>
+                    <p>SCADA/OT/BMS Programming</p>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-icon">🏗️</div>
+                    <h3>7+ YEARS</h3>
+                    <p>OT/ICS/BMS Design</p>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-icon">📋</div>
+                    <h3>5+ YEARS</h3>
+                    <p>Installation & Project Management</p>
+                </div>
+            </div>
+
+            <!-- Achievement Cards -->
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3>EDUCATION COMPLETE</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="100"></div>
+                    </div>
+                    <p class="progress-label">100% - B.S. Cybersecurity</p>
+                    <p class="achievement-detail">Graduating December 2026</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>COMPETITION ELITE</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="94"></div>
+                    </div>
+                    <p class="progress-label">94% - Top 6% Nationally</p>
+                    <p class="achievement-detail">NCL: Rank 473/7,874</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <h3>CERTIFICATION MASTER</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="100"></div>
+                    </div>
+                    <p class="progress-label">100% - 10+ Certifications</p>
+                    <p class="achievement-detail">CompTIA, (ISC)², ITIL, Tridium, Schneider</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🔬</div>
+                    <h3>LAB ARCHITECT</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="25"></div>
+                    </div>
+                    <p class="progress-label">25% - Week 2/8 Complete</p>
+                    <p class="achievement-detail">Enterprise OT/ICS Security Lab</p>
+                </div>
+            </div>
+
+            <!-- Live Lab Statistics -->
+            <div class="stats-dashboard">
+                <h2 class="section-title">⚡ LIVE LAB STATISTICS</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" data-target="1247">0</div>
+                        <div class="stat-label">Attacks Captured</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" data-target="50">0</div>
+                        <div class="stat-label">Services Running</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" data-target="18">0</div>
+                        <div class="stat-label">Honeypots Active</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" data-target="22">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" data-target="5">0</div>
+                        <div class="stat-label">VLANs Deployed</div>
+                    </div>
+                    <div class="stat-card stat-card-wide">
+                        <div class="stat-value" data-target="500247">0</div>
+                        <div class="stat-label">Events Processed / 24h</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="content-section">
+        <div class="container">
+            <h2 class="section-title">🎓 EDUCATION & TRAINING</h2>
+            
+            <div class="education-timeline">
+                <!-- Current/Future Education -->
+                <div class="education-card glow-card">
+                    <div class="edu-year">2027-2029 (Future)</div>
+                    <h3>Master of Science - Physical Cybersecurity Systems</h3>
+                    <p class="institution">Georgia Institute of Technology</p>
+                    <p class="description">Advanced graduate program focusing on physical security integration with cyber systems, critical infrastructure protection, and industrial control systems security.</p>
+                </div>
+
+                <div class="education-card glow-card">
+                    <div class="edu-year">2026</div>
+                    <h3>Bachelor of Science - Cybersecurity and Information Assurance</h3>
+                    <p class="institution">Western Governors University (WGU)</p>
+                    <p class="date">Graduating: December 2026</p>
+                    <p class="description">Comprehensive cybersecurity program covering network security, ethical hacking, digital forensics, and security operations with focus on OT/ICS environments.</p>
+                </div>
+
+                <div class="education-card glow-card">
+                    <div class="edu-year">Previous</div>
+                    <h3>Associates in Applied Science - Mechanical Engineering Systems</h3>
+                    <p class="institution">Gateway Community College</p>
+                    <p class="description">Foundation in mechanical systems, thermodynamics, and industrial automation essential for BMS and HVAC control systems.</p>
+                </div>
+
+                <div class="education-card glow-card">
+                    <div class="edu-year">Previous</div>
+                    <h3>Electrical Apprenticeship</h3>
+                    <p class="institution">South Tech College</p>
+                    <p class="description">Comprehensive electrical training including power distribution, control systems, and industrial wiring - foundation for OT/ICS career.</p>
+                </div>
+            </div>
+
+            <!-- Special Interests -->
+            <div class="interests-section">
+                <h3>Areas of Study & Enthusiasm</h3>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <div class="interest-icon">⚛️</div>
+                        <h4>Quantum Computing</h4>
+                        <p>Student & Enthusiast - Exploring quantum algorithms, quantum cryptography, and future applications in cybersecurity</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">🔬</div>
+                        <h4>Science & Engineering</h4>
+                        <p>Multidisciplinary approach combining electrical, mechanical, and computer engineering principles</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">🏁</div>
+                        <h4>Drag Car Racing</h4>
+                        <p>Enthusiast - Engineering precision, performance optimization, and real-time systems management</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="training-platforms">
+                <h3>Active Training Platforms</h3>
+                <div class="platform-grid">
+                    <div class="platform-card">
+                        <h4>🎮 Hack The Box</h4>
+                        <p>Penetration testing labs and challenges</p>
+                    </div>
+                    <div class="platform-card">
+                        <h4>🎯 TryHackMe</h4>
+                        <p>Security training rooms and paths</p>
+                    </div>
+                    <div class="platform-card">
+                        <h4>🏆 National Cyber League</h4>
+                        <p>Top 6% - Rank 473/7,874</p>
+                    </div>
+                    <div class="platform-card">
+                        <h4>🏭 Inductive University</h4>
+                        <p>SCADA skill paths and Ignition training</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="content-section dark">
+        <div class="container">
+            <h2 class="section-title">🏆 PROFESSIONAL CERTIFICATIONS</h2>
+            
+            <div class="cert-categories">
+                <h3>Cybersecurity & IT</h3>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-badge">✅</div>
+                        <h4>CompTIA Security+</h4>
+                        <p>Security Fundamentals & Best Practices</p>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge">✅</div>
+                        <h4>CompTIA Network+</h4>
+                        <p>Network Security & Infrastructure</p>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge">✅</div>
+                        <h4>CompTIA A+</h4>
+                        <p>IT Fundamentals & Hardware</p>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge">✅</div>
+                        <h4>(ISC)² SSCP</h4>
+                        <p>Systems Security Certified Practitioner</p>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge">✅</div>
+                        <h4>ITIL 4 Foundation</h4>
+                        <p>IT Service Management</p>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge">✅</div>
+                        <h4>CompTIA Project+</h4>
+                        <p>Project Management</p>
+                    </div>
+                </div>
+
+                <h3>OT/ICS/BMS Automation</h3>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-badge">✅</div>
+                        <h4>Tridium AX Certified</h4>
+                        <p>Niagara Framework & BMS Programming</p>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge">✅</div>
+                        <h4>Data Center University</h4>
+                        <p>Schneider Electric - Data Center Operations</p>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge">⏳</div>
+                        <h4>BICSI RCDD</h4>
+                        <p>Registered Communications Distribution Designer<br>(Expected: Early December 2025)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="credly-link">
+                <a href="https://www.credly.com/users/eric-case.412803197" target="_blank" class="btn-primary">
+                    View Complete Credly Profile →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frameworks & Standards Section -->
+    <section id="frameworks" class="content-section">
+        <div class="container">
+            <h2 class="section-title">📋 FRAMEWORKS & STANDARDS</h2>
+            <p class="section-subtitle">Industry Standards & Best Practices | 20 Key Frameworks</p>
+            
+            <div class="framework-categories">
+                <h3>Cybersecurity Frameworks</h3>
+                <div class="framework-grid">
+                    <div class="framework-card">
+                        <h4>NIST Cybersecurity Framework (CSF)</h4>
+                        <p>Core baseline for Identify → Protect → Detect → Respond → Recover. Industry standard.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>ISO/IEC 27001</h4>
+                        <p>Information security management, risk governance, asset protection.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>CIS Controls v8</h4>
+                        <p>Hardening controls, asset inventory, logging, secure configurations.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>MITRE ATT&CK (Enterprise)</h4>
+                        <p>Maps attacker TTPs; used in SOC detection engineering.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>MITRE D3FEND</h4>
+                        <p>Defensive techniques mapped to ATT&CK; improves blue-team strategy.</p>
+                    </div>
+                </div>
+
+                <h3>OT/ICS Security Standards</h3>
+                <div class="framework-grid">
+                    <div class="framework-card">
+                        <h4>ISA/IEC 62443</h4>
+                        <p>The gold standard for ICS cybersecurity: zones, conduits, secure PLC design.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>NIST SP 800-82 (ICS Security Guide)</h4>
+                        <p>Hardening guidance for SCADA, PLCs, HMIs, RTUs, BMS, IIoT.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>ANSI/ISA-95</h4>
+                        <p>Defines SCADA → MES → ERP integration; used in plant automation.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>IEC 61850</h4>
+                        <p>Substation automation, GOOSE messaging, MMS, utility systems.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>DNP3 / IEEE 1815</h4>
+                        <p>Critical protocol for grid control, SCADA telemetry.</p>
+                    </div>
+                </div>
+
+                <h3>Electrical Standards</h3>
+                <div class="framework-grid">
+                    <div class="framework-card">
+                        <h4>NFPA 70 (NEC)</h4>
+                        <p>Electrical installations, wiring, bonding, grounding, safety.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>NFPA 70E</h4>
+                        <p>Arc flash hazards, PPE requirements, safe work practices.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>IEEE C37 Series</h4>
+                        <p>Protection relays, breakers, fault clearing, utility-grade systems.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>IEEE 1588 (Precision Time Protocol)</h4>
+                        <p>Time-sync for substations, industrial networks, protection systems.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>IEC 60204-1</h4>
+                        <p>Safety of industrial machinery electrical systems.</p>
+                    </div>
+                </div>
+
+                <h3>Mechanical & Safety Standards</h3>
+                <div class="framework-grid">
+                    <div class="framework-card">
+                        <h4>ASME B31.3</h4>
+                        <p>Industrial piping, fluid systems, safety, integrity.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>ISO 13849</h4>
+                        <p>Safety of machinery, PL levels (a–e), safe control systems.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>IEC 61508</h4>
+                        <p>SIL lifecycle: risk reduction, sensors, actuators, PLC logic.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>ISO 12100</h4>
+                        <p>Machinery risk analysis and reduction methodology.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h4>ISO 55000</h4>
+                        <p>Lifecycle management for industrial assets and critical infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering & Design Section -->
+    <section id="engineering" class="content-section dark">
+        <div class="container">
+            <h2 class="section-title">⚙️ ENGINEERING & DESIGN EXPERTISE</h2>
+            <p class="section-subtitle">Multidisciplinary Systems Integration | 22+ Years Real-World Experience</p>
+            
+            <div class="engineering-grid">
+                <div class="engineering-card">
+                    <div class="eng-icon">⚡</div>
+                    <h3>Electrical Engineering</h3>
+                    <p class="eng-description">Power distribution design, control panel layout, load calculations, and electrical code compliance. Specializing in three-phase systems, motor control circuits, emergency power systems, and industrial electrical installations for critical infrastructure.</p>
+                    <div class="eng-skills">
+                        <span class="skill-tag">Power Distribution</span>
+                        <span class="skill-tag">Control Panels</span>
+                        <span class="skill-tag">NEC Compliance</span>
+                        <span class="skill-tag">Motor Controls</span>
+                        <span class="skill-tag">Emergency Systems</span>
+                    </div>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+
+                <div class="engineering-card">
+                    <div class="eng-icon">🔧</div>
+                    <h3>Mechanical Engineering</h3>
+                    <p class="eng-description">HVAC system design, chiller plants, boiler systems, and thermal load analysis. Expertise in building automation integration, energy optimization, and mechanical system commissioning for commercial and industrial facilities.</p>
+                    <div class="eng-skills">
+                        <span class="skill-tag">HVAC Design</span>
+                        <span class="skill-tag">Thermal Analysis</span>
+                        <span class="skill-tag">Chiller Plants</span>
+                        <span class="skill-tag">Energy Optimization</span>
+                        <span class="skill-tag">Commissioning</span>
+                    </div>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+
+                <div class="engineering-card">
+                    <div class="eng-icon">🏭</div>
+                    <h3>OT/ICS/BMS Systems</h3>
+                    <p class="eng-description">Industrial control system architecture, SCADA design, PLC programming, and building management system integration. Specializing in Tridium Niagara, Ignition SCADA, BACnet/Modbus protocols, and secure OT network design following Purdue Model principles.</p>
+                    <div class="eng-skills">
+                        <span class="skill-tag">SCADA Architecture</span>
+                        <span class="skill-tag">PLC Programming</span>
+                        <span class="skill-tag">BMS Integration</span>
+                        <span class="skill-tag">ICS Protocols</span>
+                        <span class="skill-tag">Niagara Framework</span>
+                    </div>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+
+                <div class="engineering-card">
+                    <div class="eng-icon">🌐</div>
+                    <h3>Network Engineering</h3>
+                    <p class="eng-description">Industrial network design, VLAN segmentation, routing protocols, and secure OT/IT convergence. Expertise in redundant network topologies, fiber optics, managed switches, and network monitoring for critical infrastructure environments.</p>
+                    <div class="eng-skills">
+                        <span class="skill-tag">VLAN Design</span>
+                        <span class="skill-tag">Routing/Switching</span>
+                        <span class="skill-tag">Fiber Optics</span>
+                        <span class="skill-tag">OT Networks</span>
+                        <span class="skill-tag">Network Security</span>
+                    </div>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+
+                <div class="engineering-card">
+                    <div class="eng-icon">🛡️</div>
+                    <h3>Security Engineering</h3>
+                    <p class="eng-description">OT/ICS security architecture, defense-in-depth strategies, intrusion detection systems, and security monitoring. Implementing Zero Trust principles, network segmentation, anomaly detection, and incident response capabilities for industrial control environments.</p>
+                    <div class="eng-skills">
+                        <span class="skill-tag">OT Security</span>
+                        <span class="skill-tag">IDS/IPS</span>
+                        <span class="skill-tag">Zero Trust</span>
+                        <span class="skill-tag">SIEM Integration</span>
+                        <span class="skill-tag">Threat Detection</span>
+                    </div>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+            </div>
+
+            <div class="design-philosophy">
+                <h3>Design Philosophy</h3>
+                <div class="philosophy-cards">
+                    <div class="philosophy-card">
+                        <h4>🎯 Security by Design</h4>
+                        <p>Integrating cybersecurity principles from initial concept through implementation, ensuring defense-in-depth and resilience against evolving threats.</p>
+                    </div>
+                    <div class="philosophy-card">
+                        <h4>🔄 Systems Integration</h4>
+                        <p>Seamless convergence of electrical, mechanical, and cyber systems creating unified, efficient, and maintainable infrastructure solutions.</p>
+                    </div>
+                    <div class="philosophy-card">
+                        <h4>📊 Data-Driven Optimization</h4>
+                        <p>Leveraging real-time monitoring, analytics, and predictive maintenance to maximize system performance and operational efficiency.</p>
+                    </div>
+                    <div class="philosophy-card">
+                        <h4>♻️ Sustainability Focus</h4>
+                        <p>Designing energy-efficient systems with environmental responsibility, reducing carbon footprint while maintaining operational excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OT/ICS Lab Section -->
+    <section id="ot-ics-lab" class="content-section">
+        <div class="container">
+            <h2 class="section-title">🏭 OT/ICS SECURITY LAB</h2>
+            <p class="section-subtitle">Enterprise-Grade Infrastructure | 8-Week Deployment Plan</p>
+
+            <div class="lab-tabs">
+                <button class="tab-btn active" data-tab="overview">Lab Overview</button>
+                <button class="tab-btn" data-tab="architecture">Architecture</button>
+                <button class="tab-btn" data-tab="containers">Containers</button>
+                <button class="tab-btn" data-tab="protocols">ICS Protocols</button>
+                <button class="tab-btn" data-tab="honeypots">Honeypots</button>
+                <button class="tab-btn" data-tab="monitoring">Monitoring</button>
+                <button class="tab-btn" data-tab="weekly">Weekly Progress</button>
+                <button class="tab-btn" data-tab="lessons">Lessons Learned</button>
+            </div>
+
+            <div class="tab-content active" id="overview">
+                <h3>🔬 Lab Overview</h3>
+                <p class="coming-soon">Comprehensive overview of the OT/ICS security lab infrastructure and objectives.</p>
+                <p><em>Content coming soon - documenting 8-week deployment plan...</em></p>
+            </div>
+
+            <div class="tab-content" id="architecture">
+                <h3>🏗️ Network Architecture</h3>
+                <p class="coming-soon">Purdue Model implementation with segmented VLANs and security zones.</p>
+                <p><em>Content coming soon - network topology diagrams and VLAN configuration...</em></p>
+            </div>
+
+            <div class="tab-content" id="containers">
+                <h3>📦 Container Infrastructure</h3>
+                <p class="coming-soon">METATRON, SARIEL, URIEL, and REMIEL container details and services.</p>
+                <ul class="container-list">
+                    <li><strong>METATRON (CT 201):</strong> SCADA/ICS Simulation - Ignition, OpenPLC, Node-RED, MQTT</li>
+                    <li><strong>SARIEL (CT 202):</strong> Security Monitoring & SIEM - Splunk, TheHive, MISP, Suricata, Zeek</li>
+                    <li><strong>URIEL (CT 203):</strong> Honeypot Operations - Conpot, Cowrie, Dionaea</li>
+                    <li><strong>REMIEL (CT 204):</strong> Network Security Monitoring - Zeek NSM, Suricata IDS</li>
+                </ul>
+                <p><em>Detailed configuration and service breakdown coming soon...</em></p>
+            </div>
+
+            <div class="tab-content" id="protocols">
+                <h3>⚙️ ICS Protocols Deployed</h3>
+                <p class="coming-soon">Industrial Control System protocols implemented and tested.</p>
+                <p><em>Content coming soon - Modbus, S7comm, BACnet, DNP3, and more...</em></p>
+            </div>
+
+            <div class="tab-content" id="honeypots">
+                <h3>🍯 Honeypot Network</h3>
+                <p class="coming-soon">18+ protocol honeypots capturing live attacks and threat intelligence.</p>
+                <p><em>Content coming soon - Conpot, Cowrie, Dionaea configurations and capture analysis...</em></p>
+            </div>
+
+            <div class="tab-content" id="monitoring">
+                <h3>📊 Security Monitoring</h3>
+                <p class="coming-soon">Splunk, Grafana, Prometheus, and Loki monitoring stack.</p>
+                <p><em>Content coming soon - dashboard screenshots and alert configurations...</em></p>
+            </div>
+
+            <div class="tab-content" id="weekly">
+                <h3>📅 Weekly Progress Timeline</h3>
+                <p class="coming-soon">8-week deployment schedule with milestones and achievements.</p>
+                <p><em>Content coming soon - Week 1 & 2 completed, documenting remaining weeks...</em></p>
+            </div>
+
+            <div class="tab-content" id="lessons">
+                <h3>💡 Lessons Learned</h3>
+                <p class="coming-soon">Technical challenges, solutions, and best practices discovered.</p>
+                <p><em>Content coming soon - troubleshooting guides and optimization tips...</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLC/OT/ICS Section -->
+    <section id="plc-section" class="content-section dark">
+        <div class="container">
+            <h2 class="section-title">🔧 PLC/OT/ICS SYSTEMS</h2>
+            <p class="section-subtitle">Setups, Scripts & General Knowledge | 12+ Years Programming Experience</p>
+            
+            <div class="plc-grid">
+                <div class="plc-card">
+                    <h3>🏭 System Setups</h3>
+                    <p>PLC configurations, network architectures, and deployment guides for industrial automation systems.</p>
+                    <a href="#" class="btn-secondary">View Setups →</a>
+                </div>
+                <div class="plc-card">
+                    <h3>📜 Scripts & Programs</h3>
+                    <p>Ladder logic, structured text, function blocks, and automation scripts for various PLC platforms.</p>
+                    <a href="#" class="btn-secondary">View Scripts →</a>
+                </div>
+                <div class="plc-card">
+                    <h3>📚 General Knowledge</h3>
+                    <p>Best practices, troubleshooting guides, protocol documentation, and lessons from 22+ years in the field.</p>
+                    <a href="#" class="btn-secondary">View Knowledge Base →</a>
+                </div>
+            </div>
+            
+            <p class="section-note"><em>Subsections with detailed content and hyperlinks coming soon...</em></p>
+        </div>
+    </section>
+
+    <!-- Blue Team Section -->
+    <section id="blue-team" class="content-section">
+        <div class="container">
+            <h2 class="section-title">🛡️ BLUE TEAM OPERATIONS</h2>
+            <p class="section-subtitle">Defensive Security | Threat Detection & Response</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3>🔍 Threat Detection</h3>
+                    <p>SIEM deployment, log analysis, anomaly detection, and behavioral analytics for OT/ICS environments.</p>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+                <div class="team-card">
+                    <h3>📊 Security Monitoring</h3>
+                    <p>24/7 monitoring, IDS/IPS management, network traffic analysis, and security event correlation.</p>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+                <div class="team-card">
+                    <h3>🚨 Incident Response</h3>
+                    <p>IR playbooks, forensics analysis, threat hunting, and post-incident reporting for industrial systems.</p>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+                <div class="team-card">
+                    <h3>🔐 Hardening & Defense</h3>
+                    <p>System hardening, patch management, vulnerability remediation, and defense-in-depth implementation.</p>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+            </div>
+            
+            <p class="section-note"><em>Detailed blue team projects and case studies coming soon...</em></p>
+        </div>
+    </section>
+
+    <!-- Red Team Section -->
+    <section id="red-team" class="content-section dark">
+        <div class="container">
+            <h2 class="section-title">⚔️ RED TEAM OPERATIONS</h2>
+            <p class="section-subtitle">Offensive Security | Penetration Testing & Adversary Emulation</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3>🎯 Penetration Testing</h3>
+                    <p>Network penetration testing, web application security testing, and OT/ICS security assessments.</p>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+                <div class="team-card">
+                    <h3>🕵️ Adversary Emulation</h3>
+                    <p>MITRE ATT&CK-based adversary simulation, purple team exercises, and threat modeling for ICS.</p>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+                <div class="team-card">
+                    <h3>🔓 Vulnerability Research</h3>
+                    <p>Zero-day research, exploit development, protocol analysis, and security advisory creation.</p>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+                <div class="team-card">
+                    <h3>🏴 Social Engineering</h3>
+                    <p>Phishing campaigns, physical security testing, and security awareness training program development.</p>
+                    <a href="#" class="btn-secondary">View Projects →</a>
+                </div>
+            </div>
+            
+            <p class="section-note"><em>Detailed red team projects and methodologies coming soon...</em></p>
+        </div>
+    </section>
+
+    <!-- Quantum Computing Section -->
+    <section id="quantum" class="content-section">
+        <div class="container">
+            <h2 class="section-title">⚛️ QUANTUM COMPUTING</h2>
+            <p class="section-subtitle">Notes, Experiments & Learning Journey</p>
+            
+            <div class="quantum-grid">
+                <div class="quantum-card">
+                    <h3>📝 Study Notes</h3>
+                    <p>Quantum mechanics principles, qubit operations, quantum gates, and algorithm fundamentals.</p>
+                    <a href="#" class="btn-secondary">View Notes →</a>
+                </div>
+                <div class="quantum-card">
+                    <h3>🔬 Experiments</h3>
+                    <p>Hands-on quantum circuit implementations, simulations using Qiskit and Cirq, and practical exercises.</p>
+                    <a href="#" class="btn-secondary">View Experiments →</a>
+                </div>
+                <div class="quantum-card">
+                    <h3>🎓 Learning Resources</h3>
+                    <p>Curated resources, courses, papers, and tools for quantum computing education and research.</p>
+                    <a href="#" class="btn-secondary">View Resources →</a>
+                </div>
+            </div>
+            
+            <p class="section-note"><em>Subsections with detailed content and hyperlinks coming soon...</em></p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="content-section dark">
+        <div class="container">
+            <h2 class="section-title">🚀 PROJECTS</h2>
+            
+            <div class="projects-categories">
+                <div class="project-category">
+                    <h3>💼 Current Projects</h3>
+                    <div class="project-list">
+                        <p class="coming-soon">Active projects and ongoing work will be documented here.</p>
+                        <p><em>Content coming soon - OT/ICS lab deployment, security research, automation projects...</em></p>
+                    </div>
+                </div>
+                
+                <div class="project-category">
+                    <h3>🔮 Future Projects</h3>
+                    <div class="project-list">
+                        <p class="coming-soon">Planned projects and future initiatives will be outlined here.</p>
+                        <p><em>Content coming soon - Georgia Tech master's research, advanced OT security implementations...</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ERIC CASE</h3>
+                    <p>Cybersecurity Defense Architect</p>
+                    <p>OT/ICS/BMS Systems Expert</p>
+                    <p>22+ Years Experience</p>
+                </div>
+                <div class="footer-section">
+                    <h3>CONNECT</h3>
+                    <p><a href="https://github.com/cryptocrack4011" target="_blank">GitHub</a></p>
+                    <p><a href="https://www.linkedin.com/in/eric-case-412803197/" target="_blank">LinkedIn</a></p>
+                    <p><a href="https://www.credly.com/users/eric-case.412803197" target="_blank">Credly</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>EXPERTISE</h3>
+                    <p>OT/ICS/BMS Automation</p>
+                    <p>SCADA Programming</p>
+                    <p>Physical Security Systems</p>
+                    <p>Quantum Computing (Learning)</p>
+                </div>
+                <div class="footer-section">
+                    <h3>STATUS</h3>
+                    <p><span class="status-dot active"></span> Lab Operational</p>
+                    <p>Last Updated: Nov 2025</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eric Case. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

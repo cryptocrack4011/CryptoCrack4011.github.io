@@ -629,3 +629,107 @@ html { scroll-behavior: smooth; }
     color: var(--text-primary);
     line-height: 1.6;
 }
+
+/* Frameworks & Standards Section */
+.framework-categories h3 {
+    font-family: var(--font-heading);
+    color: var(--accent-aqua);
+    margin: 3rem 0 2rem 0;
+    font-size: 1.5rem;
+}
+
+.framework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.framework-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+.framework-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-green);
+    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
+}
+
+.framework-card h4 {
+    font-family: var(--font-heading);
+    color: var(--accent-green);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.framework-card p {
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Blue/Red Team Sections */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.team-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent-aqua);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-green);
+    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
+}
+
+.team-card h3 {
+    color: var(--accent-green);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.team-card p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Updated Stats Grid with wider Events card */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+}
+
+.stat-card-wide {
+    grid-column: span 5;
+}
+
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .stat-card-wide {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .stat-card-wide {
+        grid-column: span 1;
+    }
+}
